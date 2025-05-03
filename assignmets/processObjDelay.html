@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function processObjectdelay(items, delay){
+            items.forEach((item)=>{
+                setTimeout( ()=>{
+                    item.process();
+                }, delay );
+            } );
+        }
+
+        const items = [
+            {
+                name : "alpha",
+                process : function() {
+                    console.log(`process : ${this.name}`);
+                }
+            },
+            {
+                name : "betaaa",
+                process : function(){
+                    console.log(`process : ${this.name}`);
+                }
+            }
+
+        ];
+
+        let delay = 1000;
+
+        processObjectdelay(items, delay);
+
+        
+
+    </script>
+</body>
+</html>

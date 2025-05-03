@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+      function createUniqueCounter(){
+            let count = 0;
+            return{
+                increement : function(){
+                    count++;
+                    return count;
+                },
+                GetValue : function(){
+                    return count;
+                }
+            }
+
+        }
+        const counter1 = createUniqueCounter();
+        const counter2 = createUniqueCounter();
+
+        console.log(counter1.increement());
+        console.log(counter1.increement());
+        console.log(counter1.GetValue());
+
+        console.log(counter2.increement());
+        console.log(counter2.GetValue());
+
+
+    </script>
+</body>
+</html>

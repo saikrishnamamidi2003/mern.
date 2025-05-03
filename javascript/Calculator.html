@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .bt{
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <p>Calculator</p>
+
+    <div class="bt">
+    <button onclick="res += '1';
+    console.log(`${res}`);
+    ">1</button>
+    <button onclick="res += '2'; console.log(`${res}`);
+    ">2</button>
+    <button onclick="res += '3'; console.log(`${res}`);
+    " >3</button>
+    <button onclick="res += ' + '; console.log(`${res}`);
+    " >+</button>
+</div>
+
+    <div class="bt">
+
+    <button onclick="res += '4'; console.log(`${res}`);
+    " >4</button>
+    <button onclick="res += '5'; console.log(`${res}`);
+    " >5</button>
+    <button onclick="res += '6'; console.log(`${res}`);
+    " >6</button>
+    <button onclick="res += ' - '; console.log(`${res}`);
+     ">-</button>
+
+</div>
+    <div class="bt">
+    <button onclick="res += '7'; console.log(`${res}`)
+    " >7</button>
+    <button onclick="res += '8'; console.log(`${res}`)
+    " >8</button>
+    <button onclick="res += '9'; console.log(`${res}`)
+    " >9</button>
+    <button onclick="res += ' * '; console.log(`${res}`) ">*</button>
+
+</div>
+    <div class="bt">
+    <button onclick="res += 0; console.log(`${res}`)
+    " >0</button>
+    <button onclick="res += '.'; console.log(`${res}`)
+    " >.</button>
+    <button onclick=" res = eval(res); console.log(res); ">=</button>
+    <button>/</button>
+</div>
+<div class="bt">
+    <button onclick=" res = ''; console.log('cleared')">clear</button>
+</div>
+</div>
+
+<script>
+    let res = "";
+</script>
+
+</body>
+</html>

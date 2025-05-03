@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .login-container {
+      background-color: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 300px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .input-group {
+      margin-bottom: 15px;
+    }
+
+    .input-group label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #error-message {
+      color: red;
+      text-align: center;
+    } 
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <h2>Login</h2>
+    <form id="login-form">
+      <div class="input-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" required>
+      </div>
+      <div class="input-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" required>
+      </div>
+      <button type="submit">Login</button>
+    </form>
+    <p id="error-message"></p>
+  </div>
+
+  <script>
+    // Example stored credentials with multiple users
+    const storedUsers = [
+      { username: "user@123", password: "password123" },
+      { username: "saikrishna@123", password: "123" }
+    ];
+
+    // Event listener for form submission
+    document.getElementById("login-form").addEventListener("submit", function(event) {
+      event.preventDefault(); // Prevent form submission
+
+      // Get user input
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      // Validate input: check if username or password is empty
+      if (!username || !password) {
+        document.getElementById("error-message").innerText = "Invalid username or password!";
+        return;
+      }
+
+      // Additional check to ensure username includes '@' symbol
+      if (!username.includes('@')) {
+        document.getElementById("error-message").innerText = "Username should include '@' symbol!";
+        return;
+      }
+
+      // Check if credentials match any of the stored users
+      const user = storedUsers.find(u => u.username === username && u.password === password);
+
+      // Display success or error message
+      if (user) {
+        document.getElementById("error-message").innerText = "Login Successful!";
+      } else {
+        document.getElementById("error-message").innerText = "Invalid username or password!";
+      }
+    });
+
+    // You can uncomment this block for testing purposes only
+
+    /*
+    // Function to simulate login attempt with an additional email format check
+    function loginAttempt(username, password) {
+      const storedUsers = [
+        { username: "user@123", password: "password123" },
+        { username: "@123", password: "123" }
+      ];
+
+      // Validate input: check if username or password is empty
+      if (!username || !password) {
+        return "Invalid username or password!";
+      }
+
+      // Additional check to ensure username includes '@' symbol
+      if (!username.includes('@')) {
+        return "Username should include '@' symbol!";
+      }
+
+      // Check if credentials match any of the stored users
+      const user = storedUsers.find(u => u.username === username && u.password === password);
+
+      return user ? "Login Successful!" : "Invalid username or password!";
+    }
+
+    // Run test cases
+    function runTests() {
+      testValidLoginUser@123();
+      testValidLogin@123();
+      testInvalidUsername();
+      testInvalidPassword();
+      testInvalidCredentials();
+      testEmptyUsername();
+      testEmptyPassword();
+      testEmptyCredentials();
+      testCaseSensitivity();
+      testExtraCharactersInUsername();
+      testUsernameWithoutAtSymbol();
+      testUsernameWithAtSymbol();
+      console.log("All tests completed!");
+    }
+    */
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Group Items by Category</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f7fa;
+      padding: 40px;
+    }
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    textarea, input {
+      width: 100%;
+      margin-top: 10px;
+      padding: 10px;
+      font-size: 14px;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .result {
+      margin-top: 20px;
+      background-color: #eef1f5;
+      padding: 15px;
+      border-radius: 6px;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Group Items by Category</h2>
+    <label>Enter array of objects (JSON format):</label>
+    <textarea id="itemsInput" rows="10">[
+  { "name": "Laptop", "category": "Electronics", "price": 1200 },
+  { "name": "T-Shirt", "category": "Apparel", "price": 25 },
+  { "name": "Mouse", "category": "Electronics", "price": 30 },
+  { "name": "Jeans", "category": "Apparel", "price": 70 }
+]</textarea>
+
+    <label>Enter the category key:</label>
+    <input type="text" id="categoryKeyInput" value="category" />
+
+    <button onclick="handleGroup()">Group Items</button>
+
+    <div class="result" id="outputArea"></div>
+  </div>
+
+  <script>
+    function groupByCategory(items, categoryKey) {
+      const grouped = {};
+
+      for (const item of items) {
+        const key = item[categoryKey];
+        if (!grouped[key]) {
+          grouped[key] = [];
+        }
+        grouped[key].push(item);
+      }
+
+      return grouped;
+    }
+
+    function handleGroup() {
+      try {
+        const items = JSON.parse(document.getElementById('itemsInput').value);
+        const categoryKey = document.getElementById('categoryKeyInput').value.trim();
+        const grouped = groupByCategory(items, categoryKey);
+        document.getElementById('outputArea').textContent = JSON.stringify(grouped, null, 2);
+      } catch (err) {
+        document.getElementById('outputArea').textContent = "Invalid input! Please check your JSON format.";
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,3 @@
+our goal is to create a createCounter function That also contains a inside another function so 
+when the outer function is called it can returned the other inside function so that it returns a 
+value to the outer function so it prints the output

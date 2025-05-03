@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>assignment6</title>
+</head>
+<body>
+    <script>
+        function createCalculator(){
+
+            return {
+            add : function(a, b){
+                return a + b;
+            },
+            subtract : function(a, b){
+                return a-b;
+            },
+            multiply : function(a, b){
+                return a * b;
+            },
+            divide : function(a, b){
+                if(b == 0) return "cant be divided";
+                return a / b;
+            }
+            };
+        }
+
+        const calculator = createCalculator();
+
+        console.log("Add " + calculator.add(10, 5));
+        console.log("subtract " + calculator.subtract(20, 7));
+        console.log("multiply " + calculator.multiply(20, 7));
+        console.log("divide " + calculator.divide(20, 10));
+    </script>
+    
+</body>
+</html>

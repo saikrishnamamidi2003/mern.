@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+    .highlight{
+        background-color: yellow;
+        font-weight: bold;
+    }
+</style>
+
+</head>
+<body>
+    <ul
+id = "mylist"
+>
+<li>apple</li>
+<li>banana</li>
+<li>cherry</li>
+<li>date</li>
+</ul>
+
+
+    <script>
+       const items = document.querySelectorAll('#mylist li');
+        console.log("items", items);
+        items.forEach((item, index)=> {
+            console.log(`items : ${index+1} : ${item.textContent} `);
+            if((index +1) % 2 == 0){
+                item.classList.add('highlight');
+                console.log(`added item to the highlight index : ${index+1}`);
+            }
+        });
+        console.log("length",items.length);
+    </script>
+</body>
+</html>

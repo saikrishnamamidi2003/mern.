@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objects</title>
+</head>
+<body>
+    <script>
+        const createBook = (title, author, ISBN) => ({
+            title: title,
+            author: author,
+            ISBN: ISBN,
+            isBorrowed: false,
+            
+            borrow() {
+                if (!this.isBorrowed) {
+                    this.isBorrowed = true;
+                    console.log(`You borrowed "${this.title}".`);
+                } else {
+                    console.log(`"${this.title}" is already borrowed.`);
+                }
+            },
+
+            returnBook() {
+                if (this.isBorrowed) {
+                    this.isBorrowed = false;
+                    console.log(`You returned "${this.title}".`);
+                } else {
+                    console.log(`"${this.title}" was not borrowed.`);
+                }
+            }
+        });
+
+        const Library = {
+            books: [],
+
+            addBook(book) {
+                this.books.push(book);
+                console.log(`Added "${book.title}" to the library.`);
+            },
+
+            findBookByISBN(isbn) {
+                return this.books.find(book => book.ISBN === isbn);
+            },
+
+            listAvailableBooks() {
+                return this.books.filter(book => !book.isBorrowed);
+            },
+
+            listBorrowedBooks() {
+                return this.books.filter(book => book.isBorrowed);
+            }
+        };
+
+        const book1 = createBook("1984", "George Orwell", "12345");
+        const book2 = createBook("The Alchemist", "Paulo Coelho", "67890");
+
+        Library.addBook(book1);
+        Library.addBook(book2);
+
+        book1.borrow(); // Borrow 1984
+
+        console.log("Available books:", Library.listAvailableBooks());
+        console.log("Borrowed books:", Library.listBorrowedBooks());
+
+        book1.returnBook(); // Return 1984
+
+    </script>
+</body>
+</html>

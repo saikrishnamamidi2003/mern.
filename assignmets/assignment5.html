@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>driving licence checking</title>
+</head>
+<body>
+    <script>
+        function evaluateCondition(obj){
+            if(obj.age > 18 && obj.hasLicense){
+                return "eligible to drive"
+            }
+            if(obj.temperature > 30 || obj.humidity > 70){
+                return "Warning: High discomfort level"
+            }
+            if(obj.role == "admin" || obj.role == editor && obj.isActive){
+                return "Access granted";
+            }
+            if (obj.battery < 20 && !obj.isCharging) {
+                return "Battery low - please charge";
+            }
+
+            // 6. Premium user or payment within last 30 days
+            if (obj.isPremium || obj.lastPaymentDays < 30) {
+                return "Premium access";
+            }
+
+            // 7. Not logged in OR session expired
+            if (!obj.isLoggedIn || obj.sessionExpired) {
+                return "Please log in again";
+            }
+
+            return "No specific conditions met";
+        }
+
+        const user = {
+            age : 25,
+            temperature : 20,
+            role : "admin",
+            battery : 40,
+            isPremium : false,
+            isLoggedIn : false,
+            isLoggedout : true
+        }
+        console.log(evaluateCondition(user));
+
+    </script>
+</body>
+</html>

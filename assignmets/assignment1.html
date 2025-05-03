@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>format currency</title>
+</head>
+<body>
+    <!-- <input placeholder="enter currency" class="currency"><input placeholder="enter symbol" class="symbol"><button>enter</button> -->
+    <script>
+        function formatCurrency(amount, currencyCode) {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: currencyCode
+  }).format(amount);
+}
+console.log(formatCurrency(1234.56, 'INR'));
+
+</script>
+</body>
+</html>
